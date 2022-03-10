@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {createContext}  from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import UserStr from "./store/UserStr";
+import CourseStore from "./store/CourseStore";
+
+export const Context = createContext(null)
+
+console.log()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Context.Provider value={{
+        user: new UserStr(),
+        section: new CourseStore(),
+        academic: new CourseStore(),
+        course: new CourseStore(),
+        review : new CourseStore()
+
+    }}>
+        <App />
+    </Context.Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
